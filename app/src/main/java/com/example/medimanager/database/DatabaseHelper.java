@@ -10,7 +10,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "medimanager.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table Names
     public static final String TABLE_PATIENTS = "patients";
@@ -136,50 +136,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void insertSampleData(SQLiteDatabase db) {
-        // Insert sample patients
+        // Insert sample patients (Tunisian names and phone numbers)
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" +
                 KEY_FIRST_NAME + ", " + KEY_LAST_NAME + ", " + KEY_DATE_OF_BIRTH + ", " +
                 KEY_GENDER + ", " + KEY_PHONE + ", " + KEY_EMAIL + ", " +
                 KEY_BLOOD_GROUP + ", " + KEY_LAST_VISIT + ") VALUES " +
-                "('Sarah', 'Johnson', '1990-05-15', 'Female', '+1 234-567-8901', 'sarah.j@email.com', 'A+', '2025-11-10')");
+                "('Fatma', 'Trabelsi', '1990-05-15', 'Female', '+216 20 123 456', 'fatma.trabelsi@email.tn', 'A+', '2025-11-10')");
 
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" +
                 KEY_FIRST_NAME + ", " + KEY_LAST_NAME + ", " + KEY_DATE_OF_BIRTH + ", " +
                 KEY_GENDER + ", " + KEY_PHONE + ", " + KEY_EMAIL + ", " +
                 KEY_BLOOD_GROUP + ", " + KEY_LAST_VISIT + ") VALUES " +
-                "('Michael', 'Chen', '1978-08-22', 'Male', '+1 234-567-8902', 'michael.c@email.com', 'O+', '2025-11-12')");
+                "('Mohamed', 'Ben Ali', '1978-08-22', 'Male', '+216 55 987 654', 'mohamed.benali@email.tn', 'O+', '2025-11-12')");
 
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" +
                 KEY_FIRST_NAME + ", " + KEY_LAST_NAME + ", " + KEY_DATE_OF_BIRTH + ", " +
                 KEY_GENDER + ", " + KEY_PHONE + ", " + KEY_EMAIL + ", " +
                 KEY_BLOOD_GROUP + ", " + KEY_LAST_VISIT + ") VALUES " +
-                "('Emma', 'Davis', '1997-03-08', 'Female', '+1 234-567-8903', 'emma.d@email.com', 'B+', '2025-11-08')");
+                "('Amira', 'Jaziri', '1997-03-08', 'Female', '+216 98 765 432', 'amira.jaziri@email.tn', 'B+', '2025-11-08')");
 
         db.execSQL("INSERT INTO " + TABLE_PATIENTS + " (" +
                 KEY_FIRST_NAME + ", " + KEY_LAST_NAME + ", " + KEY_DATE_OF_BIRTH + ", " +
                 KEY_GENDER + ", " + KEY_PHONE + ", " + KEY_EMAIL + ", " +
                 KEY_BLOOD_GROUP + ", " + KEY_LAST_VISIT + ") VALUES " +
-                "('James', 'Wilson', '1973-11-30', 'Male', '+1 234-567-8904', 'james.w@email.com', 'AB+', '2025-11-09')");
+                "('Ahmed', 'Gharbi', '1973-11-30', 'Male', '+216 22 333 444', 'ahmed.gharbi@email.tn', 'AB+', '2025-11-09')");
 
         // Insert sample appointments
         db.execSQL("INSERT INTO " + TABLE_APPOINTMENTS + " (" +
                 KEY_PATIENT_ID + ", " + KEY_APPOINTMENT_DATE + ", " + KEY_APPOINTMENT_TIME + ", " +
                 KEY_REASON + ", " + KEY_STATUS + ") VALUES " +
-                "(1, '2025-11-12', '09:00 AM', 'Check-up', 'completed')");
+                "(1, '2025-11-12', '09:00 AM', 'Consultation Générale', 'completed')");
 
         db.execSQL("INSERT INTO " + TABLE_APPOINTMENTS + " (" +
                 KEY_PATIENT_ID + ", " + KEY_APPOINTMENT_DATE + ", " + KEY_APPOINTMENT_TIME + ", " +
                 KEY_REASON + ", " + KEY_STATUS + ") VALUES " +
-                "(2, '2025-11-12', '10:30 AM', 'Follow-up', 'in_progress')");
+                "(2, '2025-11-12', '10:30 AM', 'Suivi', 'in_progress')");
 
         db.execSQL("INSERT INTO " + TABLE_APPOINTMENTS + " (" +
                 KEY_PATIENT_ID + ", " + KEY_APPOINTMENT_DATE + ", " + KEY_APPOINTMENT_TIME + ", " +
                 KEY_REASON + ", " + KEY_STATUS + ") VALUES " +
-                "(3, '2025-11-12', '02:00 PM', 'Consultation', 'scheduled')");
+                "(3, '2025-11-12', '02:00 PM', 'Urgence', 'scheduled')");
 
         db.execSQL("INSERT INTO " + TABLE_APPOINTMENTS + " (" +
                 KEY_PATIENT_ID + ", " + KEY_APPOINTMENT_DATE + ", " + KEY_APPOINTMENT_TIME + ", " +
                 KEY_REASON + ", " + KEY_STATUS + ") VALUES " +
-                "(4, '2025-11-12', '03:30 PM', 'Check-up', 'scheduled')");
+                "(4, '2025-11-12', '03:30 PM', 'Vaccination', 'scheduled')");
     }
 }

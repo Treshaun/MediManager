@@ -47,9 +47,14 @@ public class PatientDAO {
         );
 
         Patient patient = null;
-        if (cursor != null && cursor.moveToFirst()) {
-            patient = cursorToPatient(cursor);
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                patient = cursorToPatient(cursor);
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return patient;
@@ -65,11 +70,16 @@ public class PatientDAO {
                 DatabaseHelper.KEY_FIRST_NAME + " ASC"
         );
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                patients.add(cursorToPatient(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    patients.add(cursorToPatient(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return patients;
@@ -89,11 +99,16 @@ public class PatientDAO {
                 DatabaseHelper.KEY_FIRST_NAME + " ASC"
         );
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                patients.add(cursorToPatient(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    patients.add(cursorToPatient(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return patients;
@@ -155,9 +170,14 @@ public class PatientDAO {
         );
 
         int count = 0;
-        if (cursor != null && cursor.moveToFirst()) {
-            count = cursor.getInt(0);
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                count = cursor.getInt(0);
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return count;
@@ -174,11 +194,16 @@ public class PatientDAO {
                 String.valueOf(limit)
         );
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                patients.add(cursorToPatient(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    patients.add(cursorToPatient(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return patients;

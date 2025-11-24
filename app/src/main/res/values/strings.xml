@@ -9,7 +9,7 @@
     <string name="nav_profile">Profile</string>
 
     <!-- Home Screen -->
-    <string name="welcome_back">Welcome back, Dr. Smith</string>
+    <string name="welcome_back">Welcome back, Dr. Ben Amor</string>
     <string name="today">Today</string>
     <string name="appointments">Appointments</string>
     <string name="patients">Patients</string>
@@ -143,4 +143,8 @@
     <string name="no_appointments_found">No appointments found</string>
     <string name="add_first_patient">Add your first patient to get started</string>
     <string name="reason">reason</string>
+
+    <!-- Profile & Settings -->
+    <string name="notification_settings">Notification Settings</string>
+    <string name="enable_notifications">Enable Notifications</string>
 </resources>

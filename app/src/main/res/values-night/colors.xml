@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark theme overrides for common palette entries -->
+    <color name="background">#121212</color>
+    <color name="card_background">#1E1E1E</color>
+    <color name="surface">#1E1E1E</color>
+
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3FFFFFF</color>
+    <color name="text_hint">#80FFFFFF</color>
+
+    <color name="divider">#33FFFFFF</color>
+    <color name="border">#1FFFFFFF</color>
+
+    <color name="stat_blue_bg">#1A6EA8FF</color>
+    <color name="stat_green_bg">#1A00C853</color>
+    <color name="stat_purple_bg">#1A9C27B0</color>
+    <color name="stat_orange_bg">#1AFF9800</color>
+
+    <color name="stat_blue_text">#A3C8FF</color>
+    <color name="stat_green_text">#9DEAAE</color>
+    <color name="stat_purple_text">#E1BEE7</color>
+    <color name="stat_orange_text">#FFCC80</color>
+
+    <color name="status_completed">#66BB6A</color>
+    <color name="status_in_progress">#64B5F6</color>
+    <color name="status_scheduled">#B0BEC5</color>
+
+    <color name="warning">#FFB74D</color>
+    <color name="error">#EF5350</color>
+
+    <color name="avatar_blue">#4FC3F7</color>
+    <color name="avatar_green">#81C784</color>
+    <color name="avatar_orange">#FFB74D</color>
+    <color name="avatar_purple">#BA68C8</color>
+    <color name="avatar_pink">#F48FB1</color>
+</resources>

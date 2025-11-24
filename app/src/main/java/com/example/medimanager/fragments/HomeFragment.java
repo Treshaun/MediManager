@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.medimanager.R;
 import com.example.medimanager.activities.AddAppointmentActivity;
 import com.example.medimanager.activities.AddPatientActivity;
+import com.example.medimanager.activities.MainActivity;
 import com.example.medimanager.activities.PatientDetailsActivity;
 import com.example.medimanager.adapters.AppointmentAdapter;
 import com.example.medimanager.database.AppointmentDAO;
@@ -94,11 +95,9 @@ public class HomeFragment extends Fragment {
     private void setupClickListeners() {
         // View All button
         binding.tvViewAll.setOnClickListener(v -> {
-            // Navigate to full appointments list
-            getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new AppointmentsFragment())
-                    .addToBackStack(null)
-                    .commit();
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).navigateToAppointments();
+            }
         });
 
         // New Appointment button

@@ -26,18 +26,24 @@ public class ValidationUtils {
     }
 
     /**
-     * Validate phone number (basic validation)
+     * Validate phone number (Tunisian format)
      */
     public static boolean isValidPhone(String phone) {
         if (isEmpty(phone)) {
             return false;
         }
 
-        // Remove all non-digit characters
-        String cleanPhone = phone.replaceAll("[^0-9]", "");
+        // Remove spaces, dashes, and plus sign
+        String cleanPhone = phone.replaceAll("[\\s\\-\\+]", "");
 
-        // Check if phone has at least minimum required digits
-        return cleanPhone.length() >= Constants.MIN_PHONE_LENGTH;
+        // Check for Tunisian format:
+        // 1. Starts with 216 (country code) and has 11 digits total (216 + 8 digits)
+        // 2. Or just 8 digits (local format)
+        if (cleanPhone.startsWith("216")) {
+            return cleanPhone.length() == 11;
+        } else {
+            return cleanPhone.length() == 8;
+        }
     }
 
     /**

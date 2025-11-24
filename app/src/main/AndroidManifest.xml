@@ -35,6 +35,26 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
 
+        <!-- Add Appointment Activity -->
+        <activity
+            android:name=".activities.AddAppointmentActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <!-- Edit Profile Activity -->
+        <activity
+            android:name=".activities.EditProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <!-- Notification Settings Activity -->
+        <activity
+            android:name=".activities.NotificationSettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
 
 
         <!-- Patient Details Activity -->

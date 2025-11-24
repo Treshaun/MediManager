@@ -44,9 +44,14 @@ public class AppointmentDAO {
         Cursor cursor = database.rawQuery(query, new String[]{String.valueOf(id)});
 
         Appointment appointment = null;
-        if (cursor != null && cursor.moveToFirst()) {
-            appointment = cursorToAppointment(cursor);
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                appointment = cursorToAppointment(cursor);
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return appointment;
@@ -66,11 +71,16 @@ public class AppointmentDAO {
 
         Cursor cursor = database.rawQuery(query, null);
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                appointments.add(cursorToAppointment(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    appointments.add(cursorToAppointment(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return appointments;
@@ -90,11 +100,16 @@ public class AppointmentDAO {
 
         Cursor cursor = database.rawQuery(query, new String[]{String.valueOf(patientId)});
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                appointments.add(cursorToAppointment(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    appointments.add(cursorToAppointment(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return appointments;
@@ -114,11 +129,16 @@ public class AppointmentDAO {
 
         Cursor cursor = database.rawQuery(query, new String[]{today});
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                appointments.add(cursorToAppointment(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    appointments.add(cursorToAppointment(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return appointments;
@@ -138,11 +158,16 @@ public class AppointmentDAO {
 
         Cursor cursor = database.rawQuery(query, new String[]{status});
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                appointments.add(cursorToAppointment(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    appointments.add(cursorToAppointment(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return appointments;
@@ -201,9 +226,14 @@ public class AppointmentDAO {
         );
 
         int count = 0;
-        if (cursor != null && cursor.moveToFirst()) {
-            count = cursor.getInt(0);
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                count = cursor.getInt(0);
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return count;
@@ -219,9 +249,14 @@ public class AppointmentDAO {
         );
 
         int count = 0;
-        if (cursor != null && cursor.moveToFirst()) {
-            count = cursor.getInt(0);
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                count = cursor.getInt(0);
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return count;

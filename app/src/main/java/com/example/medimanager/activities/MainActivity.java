@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void navigateToAppointments() {
+        binding.bottomNavigation.setSelectedItemId(R.id.nav_appointments);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);

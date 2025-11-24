@@ -18,6 +18,14 @@ public class AppointmentNotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        // Check if notifications are enabled
+        android.content.SharedPreferences prefs = context.getSharedPreferences("UserProfile", Context.MODE_PRIVATE);
+        boolean areNotificationsEnabled = prefs.getBoolean("notifications_enabled", true);
+
+        if (!areNotificationsEnabled) {
+            return;
+        }
+
         int appointmentId = intent.getIntExtra("appointment_id", -1);
         String patientName = intent.getStringExtra("patient_name");
         String appointmentTime = intent.getStringExtra("appointment_time");

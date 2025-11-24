@@ -44,9 +44,14 @@ public class ConsultationDAO {
         );
 
         Consultation consultation = null;
-        if (cursor != null && cursor.moveToFirst()) {
-            consultation = cursorToConsultation(cursor);
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                consultation = cursorToConsultation(cursor);
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return consultation;
@@ -65,11 +70,16 @@ public class ConsultationDAO {
                 DatabaseHelper.KEY_CONSULTATION_DATE + " DESC"
         );
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                consultations.add(cursorToConsultation(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    consultations.add(cursorToConsultation(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return consultations;
@@ -85,11 +95,16 @@ public class ConsultationDAO {
                 DatabaseHelper.KEY_CONSULTATION_DATE + " DESC"
         );
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                consultations.add(cursorToConsultation(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    consultations.add(cursorToConsultation(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return consultations;
@@ -108,11 +123,16 @@ public class ConsultationDAO {
                 DatabaseHelper.KEY_CREATED_AT + " DESC"
         );
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                consultations.add(cursorToConsultation(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    consultations.add(cursorToConsultation(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return consultations;
@@ -157,9 +177,14 @@ public class ConsultationDAO {
         Cursor cursor = database.rawQuery(query, null);
 
         int count = 0;
-        if (cursor != null && cursor.moveToFirst()) {
-            count = cursor.getInt(0);
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                count = cursor.getInt(0);
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return count;
@@ -174,9 +199,14 @@ public class ConsultationDAO {
         );
 
         int count = 0;
-        if (cursor != null && cursor.moveToFirst()) {
-            count = cursor.getInt(0);
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                count = cursor.getInt(0);
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return count;
@@ -193,11 +223,16 @@ public class ConsultationDAO {
                 String.valueOf(limit)
         );
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                consultations.add(cursorToConsultation(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    consultations.add(cursorToConsultation(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return consultations;
@@ -216,11 +251,16 @@ public class ConsultationDAO {
                 DatabaseHelper.KEY_CONSULTATION_DATE + " DESC"
         );
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                consultations.add(cursorToConsultation(cursor));
-            } while (cursor.moveToNext());
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    consultations.add(cursorToConsultation(cursor));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return consultations;
