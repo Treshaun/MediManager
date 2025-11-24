@@ -1,54 +1,132 @@
 # MediManager
 
-MediManager is a single-module Android app that helps small clinics manage patients, consultations, and appointments. The app is written in Java 21, targets Android SDK 36 (min 23), and uses Material 1.13 with view binding.
+**Authors:** Iyed Kadri, Rani Charradi, Youssef Zaghouni (TP3)
 
-## Features
+## Description
 
-- **Home dashboard** with patient totals, today/upcoming appointment counts, and quick actions.
-- **Patients module** for browsing/searching patients, editing profiles, and viewing consultation histories.
-- **Appointments module** that lists all visits, filters by status chips, and toggles appointment states in-line.
-- **Consultations module** (via patient details) for logging diagnoses, treatments, and notes.
-- **Profile Management** for updating clinic/doctor details and managing notification preferences.
-- **Localization** support for Tunisia (fr-TN), including phone number validation (+216) and sample data.
-- **Appointment reminders** scheduled via `AlarmManager` + `AppointmentNotificationReceiver` one hour before each visit.
+MediManager is a native Android application developed to facilitate the daily management of patients in a medical practice. It allows doctors to efficiently manage patient information, consultations, and appointments via a modern and intuitive interface.
 
-## Tech Stack
+## Objectives
 
-- Android Gradle Plugin 8.13
-- Java 21 with AndroidX AppCompat, RecyclerView, ConstraintLayout
-- Manual SQLite layer via `DatabaseHelper` and DAO classes (no Room/ORM)
-- View binding across all activities/fragments and RecyclerView adapters
+- Centralize patient medical information.
+- Track consultation history.
+- Manage appointments with a notification system.
+- Offer a simple and fast user interface.
+- Guarantee data persistence via SQLite.
+
+## Functional Requirements
+
+### Patient Management (Full CRUD)
+
+- **Features:** Add, Edit, Delete (with confirmation), Search by name, View details.
+- **Patient Info:** Name, Date of Birth (auto age calculation), Gender, Phone, Email, Address, Blood Group, Allergies, Creation Date.
+
+### Consultation Management
+
+- **Features:** Add, View History, Edit, Delete, Filter by date.
+- **Consultation Info:** Patient link, Date, Diagnosis, Treatment, Prescription, Notes.
+
+### Appointment Management
+
+- **Features:** Schedule, Edit, Cancel, Mark as Completed, View (Day/Week/All), Notifications.
+- **Appointment Info:** Patient link, Date, Time, Reason, Status (Scheduled/Completed/Cancelled), Notes.
+
+### Dashboard & Statistics
+
+- Total number of registered patients.
+- Number of consultations in the current month.
+- Number of upcoming appointments.
+- List of recently added patients.
+
+## Technical Specifications
+
+- **Language:** Java 21
+- **SDK:** Min API 23 (Target API 36)
+- **Database:** SQLite (Manual implementation, no ORM)
+- **Architecture:** MVC (Model-View-Controller)
+- **UI:** Material Design 3, ViewBinding
+
+## Database Schema
+
+**Table `patients`**
+
+```sql
+CREATE TABLE patients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    date_of_birth TEXT,
+    gender TEXT,
+    phone TEXT,
+    email TEXT,
+    address TEXT,
+    blood_group TEXT,
+    allergies TEXT,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+**Table `consultations`**
+
+```sql
+CREATE TABLE consultations (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    patient_id INTEGER NOT NULL,
+    consultation_date TEXT NOT NULL,
+    diagnosis TEXT,
+    treatment TEXT,
+    prescription TEXT,
+    notes TEXT,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+);
+```
+
+**Table `appointments`**
+
+```sql
+CREATE TABLE appointments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    patient_id INTEGER NOT NULL,
+    appointment_date TEXT NOT NULL,
+    appointment_time TEXT NOT NULL,
+    reason TEXT,
+    status TEXT DEFAULT 'scheduled',
+    notes TEXT,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+);
+```
 
 ## Project Structure
 
 ```text
 app/
-  build.gradle.kts        Module configuration and dependencies
   src/main/java/com/example/medimanager/
-    activities/           Screen-level flows (AddPatient, AddAppointment, MainActivity, etc.)
-    fragments/            Dashboards (Home, Appointments, Patients, Profile)
-    adapters/             RecyclerView adapters with listener interfaces
-    database/             SQLite helper + DAO classes
-    models/               POJOs mirrored with DB schema
-    utils/                Constants, DateUtils, Validation helpers
-  src/main/res/           Layouts, drawables, menus, values
+    activities/           # Main screens (MainActivity, AddPatientActivity, etc.)
+    fragments/            # Dashboard and list fragments
+    adapters/             # RecyclerView adapters
+    database/             # SQLite helper and DAO classes
+    models/               # Data models (Patient, Consultation, Appointment)
+    utils/                # Constants and utilities
+  src/main/res/           # Layouts, drawables, values
 ```
 
 ## Getting Started
 
-1. **Requirements**: Android Studio Ladybug+ (or command-line tools), Java 21-compatible JDK, Android SDK 23–36.
-2. **Clone** the repo:
+**Requirements**: Android Studio, Java 21 JDK, Android SDK 23+.
 
-   ```bash
-   git clone https://github.com/Treshaun/MediManager.git
-   cd MediManager
-   ```
+**Clone the repo:**
 
-3. **Open in Android Studio** or use Gradle Wrapper commands:
-   - Build debug APK: `./gradlew assembleDebug`
-   - Clean build artifacts: `./gradlew clean`
-   - Unit tests: `./gradlew testDebugUnitTest`
-   - Instrumented tests: `./gradlew connectedDebugAndroidTest`
+```bash
+git clone https://github.com/Treshaun/MediManager.git
+```
+
+**Build:**
+
+```bash
+./gradlew assembleDebug
+```
 
 `local.properties` should point to your SDK path; Android Studio will generate it automatically when you open the project.
 
