@@ -1,52 +1,52 @@
 # MediManager
 
-**Authors:** Iyed Kadri, Rani Charradi, Youssef Zaghouni (TP3)
+**Auteurs :** Iyed Kadri, Rani Charradi, Youssef Zaghouni (TP3)
 
 ## Description
 
-MediManager is a native Android application developed to facilitate the daily management of patients in a medical practice. It allows doctors to efficiently manage patient information, consultations, and appointments via a modern and intuitive interface.
+MediManager est une application Android native développée pour faciliter la gestion quotidienne des patients dans un cabinet médical. Elle permet aux médecins de gérer efficacement les informations des patients, les consultations et les rendez-vous via une interface moderne et intuitive.
 
-## Objectives
+## Objectifs
 
-- Centralize patient medical information.
-- Track consultation history.
-- Manage appointments with a notification system.
-- Offer a simple and fast user interface.
-- Guarantee data persistence via SQLite.
+- Centraliser les informations médicales des patients.
+- Suivre l'historique des consultations.
+- Gérer les rendez-vous avec un système de notifications.
+- Offrir une interface utilisateur simple et rapide.
+- Garantir la persistance des données via SQLite.
 
-## Functional Requirements
+## Cahier des Charges Fonctionnel
 
-### Patient Management (Full CRUD)
+### Gestion des Patients (CRUD Complet)
 
-- **Features:** Add, Edit, Delete (with confirmation), Search by name, View details.
-- **Patient Info:** Name, Date of Birth (auto age calculation), Gender, Phone, Email, Address, Blood Group, Allergies, Creation Date.
+- **Fonctionnalités :** Ajouter, Modifier, Supprimer (avec confirmation), Rechercher par nom, Voir les détails.
+- **Infos Patient :** Nom, Prénom, Date de naissance (calcul automatique de l'âge), Genre, Téléphone, Email, Adresse, Groupe Sanguin, Allergies, Date de création.
 
-### Consultation Management
+### Gestion des Consultations
 
-- **Features:** Add, View History, Edit, Delete, Filter by date.
-- **Consultation Info:** Patient link, Date, Diagnosis, Treatment, Prescription, Notes.
+- **Fonctionnalités :** Ajouter, Voir l'historique, Modifier, Supprimer, Filtrer par date.
+- **Infos Consultation :** Lien Patient, Date, Diagnostic, Traitement, Prescription, Notes.
 
-### Appointment Management
+### Gestion des Rendez-vous
 
-- **Features:** Schedule, Edit, Cancel, Mark as Completed, View (Day/Week/All), Notifications.
-- **Appointment Info:** Patient link, Date, Time, Reason, Status (Scheduled/Completed/Cancelled), Notes.
+- **Fonctionnalités :** Planifier, Modifier, Annuler, Marquer comme terminé, Voir (Jour/Semaine/Tous), Notifications.
+- **Infos Rendez-vous :** Lien Patient, Date, Heure, Motif, Statut (Programmé/Terminé/Annulé), Notes.
 
-### Dashboard & Statistics
+### Tableau de Bord & Statistiques
 
-- Total number of registered patients.
-- Number of consultations in the current month.
-- Number of upcoming appointments.
-- List of recently added patients.
+- Nombre total de patients enregistrés.
+- Nombre de consultations du mois en cours.
+- Nombre de rendez-vous à venir.
+- Liste des patients récemment ajoutés.
 
-## Technical Specifications
+## Spécifications Techniques
 
-- **Language:** Java 21
-- **SDK:** Min API 23 (Target API 36)
-- **Database:** SQLite (Manual implementation, no ORM)
-- **Architecture:** MVC (Model-View-Controller)
-- **UI:** Material Design 3, ViewBinding
+- **Langage :** Java 21
+- **SDK :** Min API 23 (Target API 36)
+- **Base de données :** SQLite (Implémentation manuelle, sans ORM)
+- **Architecture :** MVC (Modèle-Vue-Contrôleur)
+- **UI :** Material Design 3, ViewBinding
 
-## Database Schema
+## Schéma de la Base de Données
 
 **Table `patients`**
 
@@ -98,43 +98,43 @@ CREATE TABLE appointments (
 );
 ```
 
-## Project Structure
+## Structure du Projet
 
 ```text
 app/
   src/main/java/com/example/medimanager/
-    activities/           # Main screens (MainActivity, AddPatientActivity, etc.)
-    fragments/            # Dashboard and list fragments
-    adapters/             # RecyclerView adapters
-    database/             # SQLite helper and DAO classes
-    models/               # Data models (Patient, Consultation, Appointment)
-    utils/                # Constants and utilities
-  src/main/res/           # Layouts, drawables, values
+    activities/           # Écrans principaux (MainActivity, AddPatientActivity, etc.)
+    fragments/            # Fragments de tableau de bord et listes
+    adapters/             # Adapters RecyclerView
+    database/             # Helper SQLite et classes DAO
+    models/               # Modèles de données (Patient, Consultation, Appointment)
+    utils/                # Constantes et utilitaires
+  src/main/res/           # Layouts, drawables, valeurs
 ```
 
-## Getting Started
+## Démarrage
 
-**Requirements**: Android Studio, Java 21 JDK, Android SDK 23+.
+**Prérequis** : Android Studio, JDK Java 21, Android SDK 23+.
 
-**Clone the repo:**
+**Cloner le dépôt :**
 
 ```bash
 git clone https://github.com/Treshaun/MediManager.git
 ```
 
-**Build:**
+**Compiler :**
 
 ```bash
 ./gradlew assembleDebug
 ```
 
-`local.properties` should point to your SDK path; Android Studio will generate it automatically when you open the project.
+`local.properties` doit pointer vers votre chemin SDK ; Android Studio le générera automatiquement à l'ouverture du projet.
 
-## Database Notes
+## Notes sur la Base de Données
 
-- `DatabaseHelper` seeds sample patients/appointments on first run and enforces foreign keys.
-- Schema changes require updating table constants, DAO CRUD operations, and corresponding model fields/forms.
-- Appointment status values must remain lowercase (`scheduled`, `in_progress`, `completed`, `cancelled`) to keep chips and adapters in sync.
+- `DatabaseHelper` insère des données exemples (patients/rendez-vous) au premier lancement et applique les clés étrangères.
+- Les changements de schéma nécessitent la mise à jour des constantes de table, des opérations CRUD DAO et des champs/formulaires de modèle correspondants.
+- Les valeurs de statut des rendez-vous doivent rester en minuscules (`scheduled`, `in_progress`, `completed`, `cancelled`) pour garder la synchronisation avec les chips et les adapters.
 
 ## Contributing
 
