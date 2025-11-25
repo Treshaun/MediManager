@@ -16,5 +16,7 @@
 local.properties
 /.vscode/
 .venv/
+cahier-de-charge.pdf
+.github/copilot-instructions.md
 
 CHANGELOG.md
