@@ -66,7 +66,7 @@ public class AddAppointmentActivity extends AppCompatActivity {
         // Load doctor id
         SharedPreferences prefs = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE);
         boolean isDoctor = prefs.getBoolean(Constants.PREF_IS_DOCTOR, true);
-        doctorId = prefs.getInt(Constants.PREF_USER_ID, -1);
+        doctorId = (int) prefs.getLong(Constants.PREF_USER_ID, -1);
         if (!isDoctor || doctorId == -1) {
             Toast.makeText(this, "Only doctors can manage appointments", Toast.LENGTH_SHORT).show();
             finish();

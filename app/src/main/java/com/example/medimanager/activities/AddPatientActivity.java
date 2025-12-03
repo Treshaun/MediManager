@@ -40,7 +40,7 @@ public class AddPatientActivity extends AppCompatActivity {
         
         // Load doctor id
         SharedPreferences prefs = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE);
-        doctorId = prefs.getInt(Constants.PREF_USER_ID, -1);
+        doctorId = (int) prefs.getLong(Constants.PREF_USER_ID, -1);
         if (doctorId == -1) {
             Toast.makeText(this, "Unable to determine doctor account", Toast.LENGTH_SHORT).show();
             finish();

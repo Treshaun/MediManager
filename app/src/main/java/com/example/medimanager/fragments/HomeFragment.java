@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
         consultationDAO = new ConsultationDAO(requireContext());
         // Load current doctor id
         SharedPreferences prefs = requireContext().getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE);
-        doctorId = prefs.getInt(Constants.PREF_USER_ID, -1);
+        doctorId = (int) prefs.getLong(Constants.PREF_USER_ID, -1);
 
         // Initialize UI
         setupRecyclerView();

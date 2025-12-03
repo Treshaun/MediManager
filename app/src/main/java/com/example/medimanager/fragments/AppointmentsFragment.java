@@ -72,7 +72,7 @@ public class AppointmentsFragment extends Fragment {
         // Load current user info
         SharedPreferences prefs = requireContext().getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE);
         isDoctor = prefs.getBoolean(Constants.PREF_IS_DOCTOR, true);
-        doctorId = prefs.getInt(Constants.PREF_USER_ID, -1);
+        doctorId = (int) prefs.getLong(Constants.PREF_USER_ID, -1);
         if (!isDoctor) {
             String email = prefs.getString(Constants.PREF_USER_EMAIL, "");
             Patient patient = patientDAO.getPatientByEmail(email);
