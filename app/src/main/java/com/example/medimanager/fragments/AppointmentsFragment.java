@@ -271,12 +271,6 @@ public class AppointmentsFragment extends Fragment {
     }
 
     private void showApprovalDialog(Appointment appointment) {
-        String[] options = {
-                getString(R.string.approve_appointment),
-                getString(R.string.modify_and_approve),
-                getString(R.string.reject_appointment)
-        };
-
         new AlertDialog.Builder(requireContext())
                 .setTitle(R.string.pending_appointment_request)
                 .setMessage(getString(R.string.appointment_request_details,
@@ -284,23 +278,18 @@ public class AppointmentsFragment extends Fragment {
                         appointment.getAppointmentDate(),
                         appointment.getAppointmentTime(),
                         appointment.getReason()))
-                .setItems(options, (dialog, which) -> {
-                    switch (which) {
-                        case 0: // Approve
-                            approveAppointment(appointment);
-                            break;
-                        case 1: // Modify and approve
-                            Intent intent = new Intent(requireContext(), AddAppointmentActivity.class);
-                            intent.putExtra(Constants.EXTRA_APPOINTMENT_ID, appointment.getId());
-                            intent.putExtra(Constants.EXTRA_IS_EDIT_MODE, true);
-                            addAppointmentLauncher.launch(intent);
-                            break;
-                        case 2: // Reject
-                            showRejectConfirmationDialog(appointment);
-                            break;
-                    }
+                .setPositiveButton(R.string.approve_appointment, (dialog, which) -> {
+                    approveAppointment(appointment);
                 })
-                .setNegativeButton(R.string.cancel, null)
+                .setNeutralButton(R.string.modify_and_approve, (dialog, which) -> {
+                    Intent intent = new Intent(requireContext(), AddAppointmentActivity.class);
+                    intent.putExtra(Constants.EXTRA_APPOINTMENT_ID, appointment.getId());
+                    intent.putExtra(Constants.EXTRA_IS_EDIT_MODE, true);
+                    addAppointmentLauncher.launch(intent);
+                })
+                .setNegativeButton(R.string.reject_appointment, (dialog, which) -> {
+                    showRejectConfirmationDialog(appointment);
+                })
                 .show();
     }
 
