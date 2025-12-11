@@ -5,7 +5,7 @@
 ### Clone the repository
 
 ```bash
-git clone https://github.com/Treshaun/MediManager.git
+git clone https://github.com/ranicharradi/MediManager.git
 cd MediManager
 ```
 
@@ -28,4 +28,3 @@ You can run the project using Android Studio or via the command line.
 1. Open the project in Android Studio.
 2. Sync Gradle.
 3. Select a device/emulator and click **Run**.
-
