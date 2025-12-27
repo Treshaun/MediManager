@@ -15,7 +15,6 @@ import com.example.medimanager.databinding.ActivityAddPatientBinding;
 import com.example.medimanager.models.Patient;
 import com.example.medimanager.models.User;
 import com.example.medimanager.utils.Constants;
-import com.example.medimanager.utils.DatabaseExporter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -235,9 +234,6 @@ public class AddPatientActivity extends AppCompatActivity {
             long id = patientDAO.insertPatient(currentPatient);
 
             if (id > 0) {
-                // Export database after adding new patient
-                DatabaseExporter.exportDatabase(this, "New Patient Added: " + currentPatient.getFullName());
-                
                 Toast.makeText(this, R.string.patient_added, Toast.LENGTH_SHORT).show();
                 setResult(RESULT_OK);
                 finish();

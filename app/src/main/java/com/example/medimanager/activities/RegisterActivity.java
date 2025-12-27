@@ -15,7 +15,6 @@ import com.example.medimanager.databinding.ActivityRegisterBinding;
 import com.example.medimanager.models.Patient;
 import com.example.medimanager.models.User;
 import com.example.medimanager.utils.Constants;
-import com.example.medimanager.utils.DatabaseExporter;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -149,10 +148,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         // Registration successful - auto login
         Toast.makeText(this, R.string.registration_success, Toast.LENGTH_SHORT).show();
-
-        // Export database after new user registration
-        String roleLabel = isDoctorSelected ? "Doctor" : "Patient";
-        DatabaseExporter.exportDatabase(this, "New " + roleLabel + " Registered: " + firstName + " " + lastName);
 
         // Auto-link: If registering as patient, check if a patient record exists with this email
         if (!isDoctorSelected) {
