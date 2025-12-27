@@ -1,6 +1,6 @@
 *.iml
 .gradle
-/local.properties
+local.properties
 /.idea/
 /.idea/caches
 /.idea/libraries
@@ -10,15 +10,18 @@
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
+**/build/
 /captures
 .externalNativeBuild
 .cxx
-local.properties
 /.vscode/
 .venv/
+*.apk
+*.aab
+*.keystore
+*.jks
 cahier-de-charge.pdf
 
 CHANGELOG.md
-/.venv/
 .github/
 TODO.md
